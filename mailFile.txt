@@ -1,0 +1,18 @@
+
+-------------------- Email Header --------------------
+            
+From: mo@mo.mo To: default@gmail.com
+            
+Hi, default receiver name
+            
+-------------------- Email Message --------------------
+            
+ default mail body
+            
+thanks
+            
+-------------------- Email Subject --------------------
+            
+default subject mail
+************************************************************************************
+            

@@ -71,16 +71,16 @@ class Employee(Person):
 
     def sendMail(self, to="default@gmail.com", subject="default subject mail", msg="default mail body",
                  receiver_name="default receiver name"):
-        with open("mailFile.txt", "w") as mailFile:
-            text = f'''
-            -------------------- Email Header --------------------\n
-            From: {self.email} To: {to}\n
-            Hi, {receiver_name}\n
-            -------------------- Email Message --------------------\n
-                {msg}
-            thanks\n
-            -------------------- Email Subject --------------------\n
-            {subject}
+        with open("mailFile.txt", "a") as mailFile:
+            text = f'''\n-------------------- Email Header --------------------
+            \nFrom: {self.email} To: {to}
+            \nHi, {receiver_name}
+            \n-------------------- Email Message --------------------
+            \n {msg}
+            \nthanks
+            \n-------------------- Email Subject --------------------
+            \n{subject}
+************************************************************************************
             '''
             mailFile.write(text)
 
@@ -107,5 +107,6 @@ m = Employee("mohamed", "happy", 80, "mo@mo.mo", 8000, 30, "BMW", 100, 150)
 # print(m.Car)
 # m.refuel()
 # print(m.Car)
-
-
+# m.sendMail()
+# print(Employee.allEmp[0].name)
+# print(Employee.allEmp[0].money)
