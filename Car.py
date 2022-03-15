@@ -46,7 +46,9 @@ class Car:
         if isinstance(fuel, int) and (0 <= fuel <= 100):
             self.__fuelRate = fuel
         else:
-            print("***************************\nError Please Enter valid fuel Rate\n***************************")
+            self.__fuelRate = 70
+            print("***************************\nError You Entered not valid fuel Rate\nData default = "
+                  "70\n***************************")
 
     @property
     def velocity(self):
@@ -57,7 +59,9 @@ class Car:
         if isinstance(vol, int) and (0 <= vol <= 200):
             self.__velocity = vol
         else:
-            print("***************************\nError Please Enter valid velocity\n***************************")
+            self.__velocity = 120
+            print("***************************\nError You Enter not valid velocity\nData default = "
+                  "120\n***************************")
 
 
 # m = Car("mohamed", 100, 100)

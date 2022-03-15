@@ -58,7 +58,7 @@ class Person:
             self.__healthRate = health
         else:
             self.__healthRate = 80
-            print("***************************\nError Please Enter valid health rate\nValue was set by default "
+            print("***************************\nError You Enter not valid health rate\nValue was set by default "
                   "value=80\n***************************")
 
     @property
@@ -71,7 +71,7 @@ class Person:
             self.__money = val
         else:
             self.__money = 1000
-            print("***************************\nError Please Enter valid money\nValue was set by default "
+            print("***************************\nError You Enter not valid money\nValue was set by default "
                   "value=1000\n***************************")
 
 # m = Person("mohamed", 100, "happy", 120)

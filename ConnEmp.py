@@ -120,6 +120,29 @@ def DeleteEmpByID(emp):
         print(e)
 
 
+def DeleteEmpByEmailAndName(empName,empEmail):
+    empName = str(empName)
+    empEmail = str(empEmail)
+    try:
+        resultEmp = []
+        with open("employees.txt", "r") as dbFile:
+            allEmp = dbFile.readlines()
+            for currEmp in allEmp:
+                currEmp = currEmp.strip("\n")
+                empInfo = currEmp.split(":")
+                if empInfo[1] == empName and empInfo[4] == empEmail:
+                    print(f"---------------------\nemp {currEmp} Deleted\n---------------------")
+                else:
+                    resultEmp.append(currEmp)
+
+        with open("employees.txt", "w") as dbwFile:
+            for currRes in resultEmp:
+                empInfo = currRes.strip("\n")
+                data = f"{empInfo}\n"
+                dbwFile.write(data)
+    except Exception as e:
+        print(e)
+
 # insertNewEmp("mohamed", "happy", 80, "mo@mo.mo", 8000, 30, "BMW", 100, 150)
 
 # print(getEmpByID(1))
@@ -132,3 +155,4 @@ def DeleteEmpByID(emp):
 
 # print(viewAllEmpAsLists())
 
+# DeleteEmpByEmailAndName("moh","mo@mo.mo")

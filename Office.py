@@ -3,7 +3,7 @@ import ConnEmp
 
 
 class Office:
-    def __init__(self, name, employees=Emp.getEmpFromDB()):
+    def __init__(self, name="ITI", employees=Emp.getEmpFromDB()):
         self.name = name
         self.employees = employees
 
@@ -44,7 +44,12 @@ class Office:
             print("Error Enter Valid Employee Object")
 
     def fire(self, empId):
-        pass
+        empId = int(empId)
+        if len(self.employees) >= empId:
+            empId -= 1
+            emp = self.employees[empId]
+            self.employees.pop(empId)
+            ConnEmp.DeleteEmpByEmailAndName(emp.name, emp.email)
 
     def calculate_lateness(self):
         pass
@@ -56,7 +61,7 @@ class Office:
         pass
 
 
-off = Office("ITI")
+# off = Office("ITI")
 # off.get_all_employees()
 # off.get_employee(2)
 
@@ -65,4 +70,7 @@ off = Office("ITI")
 
 # off.hire(m)
 
+# off.get_all_employees()
+
+# off.fire(3)
 # off.get_all_employees()
