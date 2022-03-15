@@ -1,6 +1,7 @@
 from Person import *
 from Car import *
 import re
+import ConnEmp
 
 regexEmail = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
@@ -47,8 +48,16 @@ class Employee(Person):
 
     @property
     def Car(self):
-        return f"(Car Name: {self.__empCar.name}, Car Fuel Rate:" \
-               f" {self.__empCar.fuelRate}, Car Velocity: {self.__empCar.velocity})"
+        return [self.__empCar.name, self.__empCar.fuelRate, self.__empCar.velocity]
+
+    def getCarName(self):
+        return self.__empCar.name
+
+    def getCarFuelRate(self):
+        return self.__empCar.fuelRate
+
+    def getCarVelocity(self):
+        return self.__empCar.velocity
 
     def work(self, hours):
         if isinstance(hours, int):
@@ -85,7 +94,16 @@ class Employee(Person):
             mailFile.write(text)
 
 
-m = Employee("mohamed", "happy", 80, "mo@mo.mo", 8000, 30, "BMW", 100, 150)
+# Get Data from DB then create Employee objects by it
+# Each object created saved in Employee.allEmp list
+def getEmpFromDB():
+    empLists = ConnEmp.viewAllEmpAsLists()
+    Employee.allEmp.clear()
+    for currEmp in empLists:
+        Employee(currEmp[1], currEmp[2], int(currEmp[3]), currEmp[4], int(currEmp[5]),
+                 int(currEmp[6]), currEmp[7], int(currEmp[8]), int(currEmp[9]))
+    return Employee.allEmp
+# m = Employee("mohamed", "happy", 80, "mo@mo.mo", 8000, 30, "BMW", 100, 150)
 
 # ######## Person Methods
 # print(m.name)
@@ -108,5 +126,13 @@ m = Employee("mohamed", "happy", 80, "mo@mo.mo", 8000, 30, "BMW", 100, 150)
 # m.refuel()
 # print(m.Car)
 # m.sendMail()
+# print(Employee.allEmp[0].name)
+# print(Employee.allEmp[0].money)
+
+# print(m.getCarName())
+# print(m.getCarVelocity())
+# print(m.getCarFuelRate())
+
+# print(getEmpFromDB())
 # print(Employee.allEmp[0].name)
 # print(Employee.allEmp[0].money)

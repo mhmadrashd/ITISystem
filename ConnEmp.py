@@ -84,6 +84,20 @@ def viewAllEmp():
         print(e)
 
 
+def viewAllEmpAsLists():
+    try:
+        with open("employees.txt", "r") as dbFile:
+            allEmp = dbFile.readlines()
+            resultEmp = []
+            for currEmp in allEmp:
+                currEmp = currEmp.strip("\n")
+                empInfo = currEmp.split(":")
+                resultEmp.append(empInfo)
+            return resultEmp
+    except Exception as e:
+        print(e)
+
+
 def DeleteEmpByID(emp):
     emp = str(emp)
     try:
@@ -115,4 +129,6 @@ def DeleteEmpByID(emp):
 # print(viewAllEmp())
 
 # DeleteEmpByID(2)
+
+# print(viewAllEmpAsLists())
 
